@@ -2,9 +2,11 @@ import ProductListItem from './ProductListItem'
 import { Grid } from '@mui/material'
 import productsArray from '../utils/productsArray'
 
-type Props = {}
+type Props = {
+    currencyType: string
+}
 
-const ProductList = (props: Props) => {
+const ProductList = ({ currencyType }: Props) => {
     return (
         <>
             <Grid container spacing={3}>
@@ -15,6 +17,7 @@ const ProductList = (props: Props) => {
                             title={title}
                             description={description}
                             price={price}
+                            currencyType={currencyType}
                         />
                     </Grid>
                 ))}

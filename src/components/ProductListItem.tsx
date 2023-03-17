@@ -1,21 +1,38 @@
-import { Card, CardContent, CardActions, Button } from '@mui/material'
+import {
+    Card,
+    CardContent,
+    CardActions,
+    Button,
+    TextField,
+} from '@mui/material'
 
 type Props = {
     title: string
     description: string
     price: number
+    currencyType: string
 }
 
-const ProductListItem = (props: Props) => {
+const ProductListItem = ({
+    title,
+    description,
+    price,
+    currencyType,
+}: Props) => {
     return (
         <>
             <Card>
                 <CardContent>
-                    <div className="product-title">{props.title}</div>
-                    <div className="product-description">
-                        {props.description}
+                    <div className="product-title">{title}</div>
+                    <div className="product-description">{description}</div>
+                    <div className="product-price">
+                        <TextField
+                            size="small"
+                            variant="standard"
+                            value={currencyType}
+                        ></TextField>{' '}
+                        {price}
                     </div>
-                    <div className="product-price">{props.price}</div>
                 </CardContent>
                 <CardActions>
                     <Button variant="contained">Buy</Button>
