@@ -4,9 +4,23 @@ import productsArray from '../utils/productsArray'
 
 type Props = {
     currencyType: string
+    exchangeCurrencyCoe: number
+    onExchangeToUah: (price: number) => void
+    onExchangeToUsd: (price: number) => void
+    onExchangeToEur: (price: number) => void
+    productsInCart: {
+        [id: number]: number
+    }
 }
 
-const ProductList = ({ currencyType }: Props) => {
+const ProductList = ({
+    currencyType,
+    exchangeCurrencyCoe,
+    onExchangeToUah,
+    onExchangeToUsd,
+    onExchangeToEur,
+    productsInCart,
+}: Props) => {
     return (
         <>
             <Grid container spacing={3}>
@@ -14,10 +28,16 @@ const ProductList = ({ currencyType }: Props) => {
                     <Grid item xs={12} sm={6} md={4} key={id}>
                         {' '}
                         <ProductListItem
+                            id={id}
                             title={title}
                             description={description}
                             price={price}
                             currencyType={currencyType}
+                            exchangeCurrencyCoe={exchangeCurrencyCoe}
+                            onExchangeToUah={onExchangeToUah}
+                            onExchangeToUsd={onExchangeToUsd}
+                            onExchangeToEur={onExchangeToEur}
+                            productsInCart={productsInCart}
                         />
                     </Grid>
                 ))}
