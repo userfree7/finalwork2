@@ -1,8 +1,4 @@
 import { Card, CardContent, CardActions, Button } from '@mui/material'
-import productsArray, {
-    getProductsObject,
-    Product,
-} from '../utils/productsArray'
 
 type Props = {
     id: number
@@ -18,7 +14,6 @@ type Props = {
 }
 
 const ProductListItem = ({
-    id,
     title,
     description,
     price,
