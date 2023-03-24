@@ -15,12 +15,6 @@ type Props = {
     onExchangeToUsd: (price: number) => void
     onExchangeToEur: (price: number) => void
     addProductToCart: (price: number) => void
-    productsInCart: {
-        [id: number]: number
-    }
-    productsObject?: {
-        [id: number]: Product
-    }
 }
 
 const ProductListItem = ({
@@ -30,12 +24,7 @@ const ProductListItem = ({
     price,
     currencyType,
     exchangeCurrencyCoe,
-    onExchangeToUah,
-    onExchangeToUsd,
-    onExchangeToEur,
-    productsInCart,
     addProductToCart,
-    productsObject = getProductsObject(productsArray),
 }: Props) => {
     const currency = price * exchangeCurrencyCoe
     return (

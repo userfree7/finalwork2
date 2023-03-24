@@ -1,17 +1,10 @@
 import { Button, Container, Typography } from '@mui/material'
 import ProductList from '../components/ProductList'
 import { useState } from 'react'
-import productsArray, {
-    getProductsObject,
-    Product,
-} from '../utils/productsArray'
+
 import Total from '../components/Total'
 
 type Props = {}
-
-type productsInCart = {
-    [id: number]: number
-}
 
 const Content = ({}: Props) => {
     const [currencyType, setCurrencyType] = useState<string>('UAH')
@@ -20,12 +13,6 @@ const Content = ({}: Props) => {
     const addProductToCart = (price: number) => {
         setCartData(cartData + price)
     }
-
-    const [productsInCart, setProductsInCart] = useState<productsInCart>({
-        1: 1,
-        2: 2,
-        3: 3,
-    })
 
     const onExchangeToUah = () => {
         setExchangeCurrencyCoe(1)
@@ -92,7 +79,6 @@ const Content = ({}: Props) => {
                     onExchangeToUah={onExchangeToUah}
                     onExchangeToUsd={onExchangeToUsd}
                     onExchangeToEur={onExchangeToEur}
-                    productsInCart={productsInCart}
                     addProductToCart={addProductToCart}
                 />
                 <Total
