@@ -8,6 +8,7 @@ type Props = {
     onExchangeToUah: (price: number) => void
     onExchangeToUsd: (price: number) => void
     onExchangeToEur: (price: number) => void
+    addProductToCart: (price: number) => void
     productsInCart: {
         [id: number]: number
     }
@@ -19,6 +20,7 @@ const ProductList = ({
     onExchangeToUah,
     onExchangeToUsd,
     onExchangeToEur,
+    addProductToCart,
     productsInCart,
 }: Props) => {
     return (
@@ -38,6 +40,7 @@ const ProductList = ({
                             onExchangeToUsd={onExchangeToUsd}
                             onExchangeToEur={onExchangeToEur}
                             productsInCart={productsInCart}
+                            addProductToCart={addProductToCart}
                         />
                     </Grid>
                 ))}

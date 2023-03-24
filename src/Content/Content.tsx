@@ -5,8 +5,10 @@ import productsArray, {
     getProductsObject,
     Product,
 } from '../utils/productsArray'
+import Total from '../components/Total'
 
 type Props = {}
+
 type productsInCart = {
     [id: number]: number
 }
@@ -14,6 +16,11 @@ type productsInCart = {
 const Content = ({}: Props) => {
     const [currencyType, setCurrencyType] = useState<string>('UAH')
     const [exchangeCurrencyCoe, setExchangeCurrencyCoe] = useState<number>(1)
+    const [cartData, setCartData] = useState<number>(0)
+    const addProductToCart = (price: number) => {
+        setCartData(cartData + price)
+    }
+
     const [productsInCart, setProductsInCart] = useState<productsInCart>({
         1: 1,
         2: 2,
@@ -86,7 +93,13 @@ const Content = ({}: Props) => {
                     onExchangeToUsd={onExchangeToUsd}
                     onExchangeToEur={onExchangeToEur}
                     productsInCart={productsInCart}
+                    addProductToCart={addProductToCart}
                 />
+                <Total
+                    currencyType={currencyType}
+                    cartData={cartData}
+                    exchangeCurrencyCoe={exchangeCurrencyCoe}
+                ></Total>
             </Container>
         </>
     )

@@ -1,10 +1,4 @@
-import {
-    Card,
-    CardContent,
-    CardActions,
-    Button,
-    TextField,
-} from '@mui/material'
+import { Card, CardContent, CardActions, Button } from '@mui/material'
 import productsArray, {
     getProductsObject,
     Product,
@@ -20,6 +14,7 @@ type Props = {
     onExchangeToUah: (price: number) => void
     onExchangeToUsd: (price: number) => void
     onExchangeToEur: (price: number) => void
+    addProductToCart: (price: number) => void
     productsInCart: {
         [id: number]: number
     }
@@ -39,6 +34,7 @@ const ProductListItem = ({
     onExchangeToUsd,
     onExchangeToEur,
     productsInCart,
+    addProductToCart,
     productsObject = getProductsObject(productsArray),
 }: Props) => {
     const currency = price * exchangeCurrencyCoe
@@ -49,27 +45,18 @@ const ProductListItem = ({
                     <div className="product-title">{title}</div>
                     <div className="product-description">{description}</div>
                     <div className="product-price">
-                        <TextField
-                            size="small"
-                            variant="standard"
-                            value={currencyType}
-                        ></TextField>{' '}
-                        <TextField
-                            size="small"
-                            variant="standard"
-                            value={currency.toFixed(2)}
-                        ></TextField>{' '}
-                    </div>
-                    <div>
-                        {Object.keys(productsInCart).map((productId) => (
-                            <div key={productId}>
-                                {productsObject[parseInt(productId)].price}
-                            </div>
-                        ))}
+                        <div>
+                            {currency.toFixed(2)} {currencyType}
+                        </div>
                     </div>
                 </CardContent>
                 <CardActions>
-                    <Button variant="contained">Buy</Button>
+                    <Button
+                        variant="contained"
+                        onClick={() => addProductToCart(price)}
+                    >
+                        Buy
+                    </Button>
                 </CardActions>
             </Card>
         </>
