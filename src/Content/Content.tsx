@@ -6,7 +6,7 @@ import Total from '../components/Total'
 
 type Props = {}
 
-const Content = ({}: Props) => {
+const Content = (props: Props) => {
     const [currencyType, setCurrencyType] = useState<string>('UAH')
     const [exchangeCurrencyCoe, setExchangeCurrencyCoe] = useState<number>(1)
     const [cartData, setCartData] = useState<number>(0)
